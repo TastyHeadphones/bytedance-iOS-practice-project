@@ -8,28 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		370BCDE02755118700126C1D /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370BCDDF2755118700126C1D /* UserInfo.swift */; };
-		370BCDE12755181F00126C1D /* userinfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 370BCDDE2755071D00126C1D /* userinfo.json */; };
+		370BCDE527563D4500126C1D /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370BCDE427563D4500126C1D /* NewsCell.swift */; };
+		370BCDE72756444400126C1D /* Emoji.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370BCDE62756444400126C1D /* Emoji.xcassets */; };
 		372AE2F52754F7D000E13995 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372AE2F42754F7D000E13995 /* AppDelegate.swift */; };
 		372AE2F72754F7D000E13995 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372AE2F62754F7D000E13995 /* SceneDelegate.swift */; };
-		372AE2F92754F7D000E13995 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372AE2F82754F7D000E13995 /* ViewController.swift */; };
+		372AE2F92754F7D000E13995 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372AE2F82754F7D000E13995 /* NewsTableViewController.swift */; };
 		372AE2FC2754F7D000E13995 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372AE2FA2754F7D000E13995 /* Main.storyboard */; };
 		372AE2FF2754F7D000E13995 /* basic_functions.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 372AE2FD2754F7D000E13995 /* basic_functions.xcdatamodeld */; };
-		372AE3012754F7D200E13995 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372AE3002754F7D200E13995 /* Assets.xcassets */; };
 		372AE3042754F7D200E13995 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372AE3022754F7D200E13995 /* LaunchScreen.storyboard */; };
+		37DB994027564C93008792E1 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37DB993F27564C93008792E1 /* AppIcon.xcassets */; };
+		37DB9944275654F6008792E1 /* userinfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 37DB9941275653F1008792E1 /* userinfo.json */; };
+		37DB994627565640008792E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37DB994527565640008792E1 /* Assets.xcassets */; };
+		37DB994827566044008792E1 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DB994727566044008792E1 /* Photo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		370BCDDE2755071D00126C1D /* userinfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = userinfo.json; sourceTree = "<group>"; };
 		370BCDDF2755118700126C1D /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		370BCDE427563D4500126C1D /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		370BCDE62756444400126C1D /* Emoji.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Emoji.xcassets; sourceTree = "<group>"; };
 		372AE2F12754F7D000E13995 /* basic functions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "basic functions.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		372AE2F42754F7D000E13995 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		372AE2F62754F7D000E13995 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		372AE2F82754F7D000E13995 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		372AE2F82754F7D000E13995 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		372AE2FB2754F7D000E13995 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		372AE2FE2754F7D000E13995 /* basic_functions.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = basic_functions.xcdatamodel; sourceTree = "<group>"; };
-		372AE3002754F7D200E13995 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		372AE3032754F7D200E13995 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		372AE3052754F7D200E13995 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37DB993F27564C93008792E1 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
+		37DB9941275653F1008792E1 /* userinfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = userinfo.json; sourceTree = "<group>"; };
+		37DB994527565640008792E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		37DB994727566044008792E1 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +54,6 @@
 		372AE2E82754F7D000E13995 = {
 			isa = PBXGroup;
 			children = (
-				370BCDDF2755118700126C1D /* UserInfo.swift */,
 				372AE2F32754F7D000E13995 /* basic functions */,
 				372AE2F22754F7D000E13995 /* Products */,
 			);
@@ -63,15 +70,20 @@
 		372AE2F32754F7D000E13995 /* basic functions */ = {
 			isa = PBXGroup;
 			children = (
+				370BCDDF2755118700126C1D /* UserInfo.swift */,
 				372AE2F42754F7D000E13995 /* AppDelegate.swift */,
-				370BCDDE2755071D00126C1D /* userinfo.json */,
 				372AE2F62754F7D000E13995 /* SceneDelegate.swift */,
-				372AE2F82754F7D000E13995 /* ViewController.swift */,
+				372AE2F82754F7D000E13995 /* NewsTableViewController.swift */,
+				37DB994727566044008792E1 /* Photo.swift */,
+				370BCDE427563D4500126C1D /* NewsCell.swift */,
 				372AE2FA2754F7D000E13995 /* Main.storyboard */,
-				372AE3002754F7D200E13995 /* Assets.xcassets */,
 				372AE3022754F7D200E13995 /* LaunchScreen.storyboard */,
+				370BCDE62756444400126C1D /* Emoji.xcassets */,
+				37DB993F27564C93008792E1 /* AppIcon.xcassets */,
 				372AE3052754F7D200E13995 /* Info.plist */,
+				37DB994527565640008792E1 /* Assets.xcassets */,
 				372AE2FD2754F7D000E13995 /* basic_functions.xcdatamodeld */,
+				37DB9941275653F1008792E1 /* userinfo.json */,
 			);
 			path = "basic functions";
 			sourceTree = "<group>";
@@ -134,9 +146,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				370BCDE12755181F00126C1D /* userinfo.json in Resources */,
+				37DB9944275654F6008792E1 /* userinfo.json in Resources */,
 				372AE3042754F7D200E13995 /* LaunchScreen.storyboard in Resources */,
-				372AE3012754F7D200E13995 /* Assets.xcassets in Resources */,
+				370BCDE72756444400126C1D /* Emoji.xcassets in Resources */,
+				37DB994027564C93008792E1 /* AppIcon.xcassets in Resources */,
+				37DB994627565640008792E1 /* Assets.xcassets in Resources */,
 				372AE2FC2754F7D000E13995 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,7 +162,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				372AE2F92754F7D000E13995 /* ViewController.swift in Sources */,
+				37DB994827566044008792E1 /* Photo.swift in Sources */,
+				372AE2F92754F7D000E13995 /* NewsTableViewController.swift in Sources */,
+				370BCDE527563D4500126C1D /* NewsCell.swift in Sources */,
 				372AE2F52754F7D000E13995 /* AppDelegate.swift in Sources */,
 				372AE2FF2754F7D000E13995 /* basic_functions.xcdatamodeld in Sources */,
 				370BCDE02755118700126C1D /* UserInfo.swift in Sources */,
