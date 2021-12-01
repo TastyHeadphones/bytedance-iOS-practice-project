@@ -23,14 +23,15 @@ class NewsCell: UITableViewCell{
         animations: {
             button.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
             button.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            button.setImage(UIImage(named: "emoji_52"), for: .normal)
+            button.tintColor = .red
+            
         }, completion:nil)
         
     }
     
     @IBAction func like(_ sender: UIButton){
-        
         sender.isSelected = !sender.isSelected
+        
         print(sender.isSelected)
         if sender.isSelected{
            likeAnimation(button: sender)
@@ -54,3 +55,4 @@ extension NewsCell{
         image.clipsToBounds = true
     }
 }
+
