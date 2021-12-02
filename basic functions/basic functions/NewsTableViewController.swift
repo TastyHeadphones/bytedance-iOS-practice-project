@@ -9,38 +9,47 @@ import UIKit
 
 class NewsTableViewController: UITableViewController {
 //    var userInfo:UserInfo!
-    var userInfo:UserInfo!
+    var userInfos = [UserInfo]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewLoaded")
+        let store = UserInfoStore()
+        store.fetchUserInfo{
+            (infos) in
+            self.userInfos = infos
+            self.tableView.reloadData()
+        }
+        print("viewLoaded userInfocount = \(userInfos.count)")
         tableView.rowHeight = UITableView.automaticDimension
+        
 //        tableView.estimatedRowHeight = 160
         // Do any additional setup after loading the view.
-        if let dataURL = Bundle.main.url(forResource: "userinfo", withExtension: "json"){
-            if let data = try? Data(contentsOf: dataURL){
-                let decoder = JSONDecoder()
-                let info: UserInfo = try! decoder.decode(UserInfo.self, from: data)
-                self.userInfo = info
-            }
-        }
+//        if let dataURL = Bundle.main.url(forResource: "userinfo", withExtension: "json"){
+//            if let data = try? Data(contentsOf: dataURL){
+//                let decoder = JSONDecoder()
+//                let info: UserInfo = try! decoder.decode(UserInfo.self, from: data)
+//                self.userInfo = info
+//            }
+//        }
+        
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return userInfos.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell",for: indexPath) as! NewsCell
-        cell.commentCount.text = "\(userInfo.commentCount)"
-        cell.likeCount.text = "\(userInfo.likeCount)"
-        cell.shareCount.text = "\(userInfo.shareCount)"
-        cell.userName.text = userInfo.mediaInfo.name
-        cell.userVerifiedContent.text = userInfo.mediaInfo.verifiedContent
-        cell.content.text = userInfo.content
+        cell.commentCount.text = "\(userInfos[indexPath.row].commentCount)"
+        cell.likeCount.text = "\(userInfos[indexPath.row].likeCount)"
+        cell.shareCount.text = "\(userInfos[indexPath.row].shareCount)"
+        cell.userName.text = userInfos[indexPath.row].mediaInfo.name
+        cell.userVerifiedContent.text = userInfos[indexPath.row].mediaInfo.verifiedContent
+        cell.content.text = userInfos[indexPath.row].content
         cell.makeRound()
         
         let photo = Photo()
-        photo.fetchImage(with:userInfo.mediaInfo.avatarURL){
+        photo.fetchImage(with:userInfos[indexPath.row].mediaInfo.avatarURL){
             (result) in
             switch result{
             case let .success(image):
@@ -51,7 +60,7 @@ class NewsTableViewController: UITableViewController {
             return
         }
         
-        photo.fetchImage(with:userInfo.imageURL){
+        photo.fetchImage(with:userInfos[indexPath.row].imageURL){
             (result) in
             switch result{
             case let .success(image):
@@ -61,7 +70,6 @@ class NewsTableViewController: UITableViewController {
             }
             return
         }
-        
         
         
         return cell
