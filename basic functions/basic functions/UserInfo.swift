@@ -21,15 +21,6 @@ class UserInfo: Codable {
         case imageURL = "image_url"
     }
     
-//    init(with jsonData:Data){
-//        do{
-//            let decoder = JSONDecoder()
-//            let userInfo = try decoder.decode(UserInfo.self, from: jsonData)
-//        }
-//        catch{
-//            print(error)
-//        }
-//    }
 }
 
 class MediaInfo: Codable {
