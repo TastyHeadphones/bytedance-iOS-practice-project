@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import AVKit
 class NewsTableViewController: UITableViewController {
 //    var userInfo:UserInfo!
     var userInfos = [UserInfo]()
@@ -46,7 +46,8 @@ class NewsTableViewController: UITableViewController {
         cell.shareCount.text = "\(userInfos[indexPath.row].shareCount)"
         cell.userName.text = userInfos[indexPath.row].mediaInfo.name
         cell.userVerifiedContent.text = userInfos[indexPath.row].mediaInfo.verifiedContent
-        cell.content.text = userInfos[indexPath.row].content
+        cell.content.text = userInfos[indexPath.row].abstract
+        cell.selectionStyle = .none
         cell.makeRound()
         
         let photo = Photo()
@@ -55,26 +56,45 @@ class NewsTableViewController: UITableViewController {
             switch result{
             case let .success(image):
                 cell.userPhoto.image = image
-            case .failure(_):
-                print("error")
+            case let .failure(error):
+                print(error)
             }
             return
         }
         
-        photo.fetchImage(with:userInfos[indexPath.row].imageURL){
-            (result) in
-            switch result{
-            case let .success(image):
-                cell.newsPhoto.image = image
-            case .failure(_):
-                print("error")
-            }
-            return
-        }
+//        photo.fetchImage(with:userInfos[indexPath.row].detailVideoLargeImage.url){
+//            (result) in
+//            switch result{
+//            case let .success(image):
+//                cell.newsPhoto.image = image
+//            case let .failure(error):
+//                print(error)
+//            }
+//            return
+//        }
+        cell.newsPhoto.image = nil
+        
+        let url = userInfos[indexPath.row].videoURL!
+        cell.player = AVPlayer(url: url)
+        let playerLayer = AVPlayerLayer(player: cell.player)
+        playerLayer.frame = cell.videoView.bounds
+        cell.videoView.layer.addSublayer(playerLayer)
+        cell.player.pause()
         
         
         return cell
     }
+    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if let url = userInfos[indexPath.row].videoURL {
+//          let player = AVPlayer(url: url)
+//          let playerViewController = AVPlayerViewController()
+//          playerViewController.player = player
+//          present(playerViewController, animated: true) {
+//             player.play()
+//          }
+//       }
+//    }
     
     
 }

@@ -36,7 +36,7 @@ class UserInfoStore{
     }
     
     func fetchWebUserInfo(completion: @escaping ([UserInfo]) -> Void){
-        let components = URLComponents(string: "https://getman.cn/mock/newcomer/feed")!
+        let components = URLComponents(string: "https://getman.cn/mock/yang/demo")!
         let url = components.url!
        
         let request = URLRequest(url: url)

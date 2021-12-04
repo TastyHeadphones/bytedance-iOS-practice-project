@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 class NewsCell: UITableViewCell{
     
@@ -17,7 +18,11 @@ class NewsCell: UITableViewCell{
     @IBOutlet var commentCount: UILabel!
     @IBOutlet var likeCount: UILabel!
     @IBOutlet var content: UILabel!
+    @IBOutlet var videoView: UIView!
+    var player = AVPlayer()
     var isLiked: Bool = false
+    var isPlaying: Bool = false
+
     
     let emitterLayer:CAEmitterLayer! = {
         let emitterLayer = CAEmitterLayer()
@@ -25,11 +30,14 @@ class NewsCell: UITableViewCell{
         emitterLayer.emitterPosition = CGPoint(x: 0, y: 0)
             
         let cell = CAEmitterCell()
-        cell.birthRate = 3
+        cell.alphaSpeed = -1.0
+        cell.alphaRange = 0.5
+        cell.birthRate = 1
         cell.lifetime = 1
-        cell.velocity = 100
+        cell.velocity = 40
         cell.scale = 0.5
-        cell.emissionRange = 2.0
+        cell.emissionLongitude = -.pi / 2
+        cell.emissionRange = .pi
         cell.contents = UIImage(named: "emoji_52")!.cgImage
         
         emitterLayer.emitterCells = [cell]
@@ -41,9 +49,10 @@ class NewsCell: UITableViewCell{
     private func likeAnimation(button:UIButton){
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping:0.5, initialSpringVelocity: 0.5,options: [.allowUserInteraction],
         animations: {
+            self.emitterLayer.birthRate = 5
             button.layer.addSublayer(self.emitterLayer)
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
-               self.emitterLayer.removeFromSuperlayer()
+                self.emitterLayer.birthRate = 0
            }
             button.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
             button.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
@@ -67,6 +76,19 @@ class NewsCell: UITableViewCell{
         else{
             sender.setImage(UIImage(named: "u13_like_feed"), for: .normal)
 //            emitterLayer.removeFromSuperlayer()
+        }
+        
+    }
+    
+    @IBAction func playVideo(_ button: UIButton){
+        isPlaying = !isPlaying
+        if isPlaying{
+            player.play()
+            button.setImage(nil, for: .normal)
+        }
+        else{
+            player.pause()
+            button.setImage(UIImage(named: "play.fill"), for: .normal)
         }
         
     }
