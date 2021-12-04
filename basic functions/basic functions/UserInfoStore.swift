@@ -7,8 +7,11 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class UserInfoStore{
+    
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
@@ -16,8 +19,26 @@ class UserInfoStore{
     }()
     
     func fetchUserInfo(completion: @escaping ([UserInfo]) -> Void){
+        if(try! context.fetch(JsonData.fetchRequest()).isEmpty){
+            print("Fetch from network")
+            fetchWebUserInfo{
+                (userInfos) in
+                completion(userInfos)
+            }
+        }
+        else {
+            let data = try! context.fetch(JsonData.fetchRequest())[0].data
+            let decoder = JSONDecoder()
+            let userInfos = try! decoder.decode([UserInfo].self, from: data!)
+            print("Fetch from CoreData")
+            completion(userInfos)
+        }
+    }
+    
+    func fetchWebUserInfo(completion: @escaping ([UserInfo]) -> Void){
         let components = URLComponents(string: "https://getman.cn/mock/newcomer/feed")!
         let url = components.url!
+       
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) {
             (data, response, error) in
@@ -25,7 +46,10 @@ class UserInfoStore{
             let decoder = JSONDecoder()
 //                print(data!)
                 let userInfos = try decoder.decode([UserInfo].self, from: data!)
-//                print(userInfos[0].mediaInfo.name)
+                let newJsonData = JsonData(context: self.context)
+                newJsonData.data = data
+                newJsonData.webURL = url
+                try! self.context.save()
                 OperationQueue.main.addOperation {
                     completion(userInfos)
                 }
@@ -35,7 +59,6 @@ class UserInfoStore{
             }
         }
             task.resume()
-            
 
     }
     

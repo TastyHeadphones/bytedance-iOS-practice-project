@@ -10,6 +10,7 @@ import UIKit
 class NewsTableViewController: UITableViewController {
 //    var userInfo:UserInfo!
     var userInfos = [UserInfo]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let store = UserInfoStore()

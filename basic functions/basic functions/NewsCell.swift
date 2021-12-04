@@ -18,9 +18,33 @@ class NewsCell: UITableViewCell{
     @IBOutlet var likeCount: UILabel!
     @IBOutlet var content: UILabel!
     var isLiked: Bool = false
+    
+    let emitterLayer:CAEmitterLayer! = {
+        let emitterLayer = CAEmitterLayer()
+            
+        emitterLayer.emitterPosition = CGPoint(x: 0, y: 0)
+            
+        let cell = CAEmitterCell()
+        cell.birthRate = 3
+        cell.lifetime = 1
+        cell.velocity = 100
+        cell.scale = 0.5
+        cell.emissionRange = 2.0
+        cell.contents = UIImage(named: "emoji_52")!.cgImage
+        
+        emitterLayer.emitterCells = [cell]
+        return emitterLayer
+    }()
+    
+
+    
     private func likeAnimation(button:UIButton){
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping:0.5, initialSpringVelocity: 0.5,options: [.allowUserInteraction],
         animations: {
+            button.layer.addSublayer(self.emitterLayer)
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
+               self.emitterLayer.removeFromSuperlayer()
+           }
             button.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
             button.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             button.tintColor = .red
@@ -28,7 +52,9 @@ class NewsCell: UITableViewCell{
         
     }
     
+    
     @IBAction func like(_ sender: UIButton){
+        
         isLiked = !isLiked
 //        print(isLiked)
         let image = UIImage(named: "u13_like_feed")?.withRenderingMode(.alwaysTemplate)
@@ -36,9 +62,11 @@ class NewsCell: UITableViewCell{
 
         if isLiked{
            likeAnimation(button: sender)
+
         }
         else{
             sender.setImage(UIImage(named: "u13_like_feed"), for: .normal)
+//            emitterLayer.removeFromSuperlayer()
         }
         
     }
